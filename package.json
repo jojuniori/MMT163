@@ -1,0 +1,19 @@
+{
+  "name": "NeteaseMusicLrcDownloader",
+  "version": "0.1.0",
+  "description": "use to download lyrics from NeteaseMusic",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "http://git.moem.cc/JoJunIori/NeteaseMusicLrcDownloader",
+  "keywords": [
+    "NeteaseMusic",
+    "Music163",
+    "lyrics"
+  ],
+  "author": "JoJunIori",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  }
+}
