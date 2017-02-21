@@ -1,19 +1,24 @@
 {
-  "name": "NeteaseMusicLrcDownloader",
-  "version": "0.1.0",
-  "description": "use to download lyrics from NeteaseMusic",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "repository": "http://git.moem.cc/JoJunIori/NeteaseMusicLrcDownloader",
-  "keywords": [
-    "NeteaseMusic",
-    "Music163",
-    "lyrics"
-  ],
-  "author": "JoJunIori",
-  "devDependencies": {
-    "electron": "^1.4.1"
-  }
+    "name": "lrc163",
+    "version": "0.1.0",
+    "description": "NeteaseMusic lyrics downloader",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "packosx": "electron-packager . $npm_package_productName --out=dist/osx --platform=darwin --arch=x64 --icon=./lrc163.icns",
+        "packwin32": "electron-packager . $npm_package_productName --out=dist/win --platform=win32 --arch=ia32 --icon=./lrc163.ico",
+        "packwin64": "electron-packager . $npm_package_productName --out=dist/win --platform=win32 --arch=x64 --icon=./lrc163.ico",
+        "build": "npm run pack:osx && npm run pack:win32 && npm run pack:win64"
+    },
+    "repository": "http://git.moem.cc/JoJunIori/NeteaseMusicLrcDownloader",
+    "keywords": [
+        "NeteaseMusic",
+        "Music163",
+        "lrc163",
+        "lyrics"
+    ],
+    "author": "JoJunIori",
+    "devDependencies": {
+        "electron": "^1.4.1"
+    }
 }

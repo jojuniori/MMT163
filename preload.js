@@ -1,12 +1,25 @@
 //jscs:disable maximumLineLength
 // get lrc
-function getLrc(songID) {
+function getLrc(songID, saveName) {
   $.get('http://music.163.com/api/song/lyric?lv=-1&tv=-1&id=' + songID, function (result) {
-      var newLrc = JSON.parse(result).lrc.lyric.toString();
-      var blob = new Blob([newLrc], { type: 'text/plain;charset=utf-8' });
-      saveAs(blob, '歌词.lrc');
+      var presult = JSON.parse(result);
 
-      // console.log(newLrc);
+      // check lyric
+      if (!presult.nolyric && !presult.uncollected) {
+        var newLrc = '';
+
+        // check translation
+        if (presult.tlyric.lyric !== null) newLrc += presult.tlyric.lyric.toString();
+        newLrc += presult.lrc.lyric.toString();
+        var blob = new Blob([newLrc], {
+            type: 'text/plain;charset=utf-8',
+          });
+
+        // console.log(newLrc);
+        saveAs(blob, saveName + '.lrc');
+      } else {
+        alert('无歌词');
+      }
     });
 }
 
@@ -40,29 +53,18 @@ function onload() {
   //Change title
   $('title').text('网易云歌词');
 
-  // Change style
+  // iFrame onload
   iframeDiv.find('#g_top, #g_nav').remove();
 
   function changeStyle() {
     var iframeDiv = $(document.getElementById('g_iframe').contentWindow.document);
     $('#g-topbar, .g-btmbar').remove();
-    if (iframeDiv.find('.g-ft').length > 0) {
-      iframeDiv.find('#g_top, #g_nav, .g-ft, .u-lstlay.j-flag, .m-tabs.m-tabs-srch.f-cb.ztag').remove();
-      iframeDiv.find('html, body').css('overflow-x', 'hidden');
-      iframeDiv.find('.n-srch .pgsrch').css('width', '100%');
-      iframeDiv.find('.n-srch .pgsrch, .n-srch .pgsrch .btn').css('background-image', 'url(http://ofcgpg3h5.bkt.clouddn.com/Music163/search_button.png)');
-      iframeDiv.find('.n-srch .pgsrch .srch').css({
-          width: '810px',
-          padding: '12px 20px',
-          margin: '0',
-          background: 'transparent',
-        });
-      iframeDiv.find('.n-srch .pgsrch .btn').hover(function () {
-          $(this).css('background-position', '-910px 0');
-        }, function () {
+    if (iframeDiv.find('head').length > 0) {
+      // iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://ofcgpg3h5.bkt.clouddn.com/Music163-style.css">');
+      iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://localhost/Music163-style.css">');
 
-          $(this).css('background-position', '0 9999px');
-        });
+      // add placeholder
+      iframeDiv.find('#m-search-input').attr('placeholder', '输入 单曲/歌手/专辑/网易云音乐ID 进行搜索');
 
       // Bind download
       iframeDiv.find('#m-search').on('click', '[title="播放"]', function (event) {
@@ -72,8 +74,9 @@ function onload() {
           var songName = item.children('.td.w0').find('.text').text();
           var artist = item.children('.td.w1').children('.text').text();
           var album = item.children('.td.w2').children('.text').text().replace('《', '').replace('》', '');
-          console.log(album + '-' + songName + '-' + artist);
-          getLrc(songID);
+          var saveName = album + ' - ' + songName + ' - ' + artist;
+          console.log(saveName);
+          getLrc(songID, saveName);
         });
 
       clearInterval(timerCS);
@@ -84,12 +87,10 @@ function onload() {
 
   // Execute loop
   function executeLoop() {
-    // remove href
     var iframeDiv = $(document.getElementById('g_iframe').contentWindow.document);
 
+    // remove href
     if (iframeDiv.find('[href]').length > 0) iframeDiv.find('a').removeAttr('href');
-
-    if (iframeDiv.find('.opt.hshow').length > 0) iframeDiv.find('.opt.hshow').remove();
 
     // failed code... don't care this...
     // $.each(iframeDiv.find('[href]'), function (index, value) {
