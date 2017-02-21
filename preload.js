@@ -7,10 +7,12 @@ function getLrc(songID, saveName) {
       // check lyric
       if (!presult.nolyric && !presult.uncollected) {
         var newLrc = '';
+        newLrc += presult.lrc.lyric.toString();
 
         // check translation
         if (presult.tlyric.lyric !== null) newLrc += presult.tlyric.lyric.toString();
-        newLrc += presult.lrc.lyric.toString();
+
+        // cache lyric
         var blob = new Blob([newLrc], {
             type: 'text/plain;charset=utf-8',
           });

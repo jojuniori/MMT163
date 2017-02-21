@@ -8,8 +8,8 @@ create from Netease music website search page.
 redesign UI，remove inconsequential things.  
 get lyrics.  
 download lyrics file.  
-
-### uncompleted：
 auto rename lyrics file.  
 abroad music integration translation text.  
+
+### uncompleted：
 abroad music respectively downloads original and translation text.  
