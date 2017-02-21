@@ -53,7 +53,7 @@ function createWindow() {
       submenu: [
         {
           label: '关于',
-          click() { require('electron').shell.openExternal('http://electron.atom.io'); },
+          click() { require('electron').shell.openExternal('http://www.moem.cc'); },
         },
         {
           label: '退出',
