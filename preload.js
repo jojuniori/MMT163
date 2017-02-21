@@ -61,7 +61,7 @@ function onload() {
     $('#g-topbar, .g-btmbar').remove();
     if (iframeDiv.find('head').length > 0) {
       // iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://ofcgpg3h5.bkt.clouddn.com/Music163-style.css">');
-      iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://localhost/Music163-style.css">');
+      iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://xin.moem.cc/lrc163/lrc163.css">');
 
       // add placeholder
       iframeDiv.find('#m-search-input').attr('placeholder', '输入 单曲/歌手/专辑/网易云音乐ID 进行搜索');

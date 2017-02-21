@@ -26,6 +26,10 @@ html, body {
 }
 
 /*indicate*/
+.ztag.j-flag:empty {
+    height: 450px;
+    background: url(http://xin.moem.cc/lrc163/lrc163.png) no-repeat;
+}
 .ztag.j-flag .n-srchrst .srchsongst::before {
 	content: '　　 歌曲名　　　　　　　　　　　　　　　　　　　　　　　　艺术家　　　　　　　专辑　　　　　　　　　　曲长　';
 	background: #f2f2f2;

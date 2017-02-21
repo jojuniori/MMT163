@@ -5,10 +5,10 @@
     "main": "main.js",
     "scripts": {
         "start": "electron .",
-        "packosx": "electron-packager . $npm_package_productName --out=dist/osx --platform=darwin --arch=x64 --icon=./lrc163.icns",
-        "packwin32": "electron-packager . $npm_package_productName --out=dist/win --platform=win32 --arch=ia32 --icon=./lrc163.ico",
-        "packwin64": "electron-packager . $npm_package_productName --out=dist/win --platform=win32 --arch=x64 --icon=./lrc163.ico",
-        "build": "npm run pack:osx && npm run pack:win32 && npm run pack:win64"
+        "packosx": "electron-packager . 网易云歌词 --out=dist/osx --platform=darwin --arch=x64 --icon=./media/lrc163.icns --ignore=dist --ignore=media --ignore=node_modules --ignore=.git --overwrite --prune",
+        "packwin32": "electron-packager . 网易云歌词 --asar=true --out=dist/win --platform=win32 --arch=ia32 --icon=./media/lrc163.ico --ignore=dist --ignore=media --ignore=node_modules --ignore=.git --overwrite --prune",
+        "packwin64": "electron-packager . 网易云歌词 --asar=true --out=dist/win --platform=win32 --arch=x64 --icon=./media/lrc163.ico --ignore=dist --ignore=media --ignore=node_modules --ignore=.git --overwrite --prune",
+        "build": "npm run packosx && npm run packwin32 && npm run packwin64"
     },
     "repository": "http://git.moem.cc/JoJunIori/NeteaseMusicLrcDownloader",
     "keywords": [
