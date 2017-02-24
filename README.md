@@ -1,8 +1,9 @@
-# Netease music lyrics downloader
-### dev dependencies：
-Electron, jQuery, FileSaver.min.js
+### Netease music lyrics downloader
+create from Netease music website search page.  
+icon template from: [yoios](https://github.com/mmarfil/yoios)  
 
-create from Netease music website search page.
+### dev dependencies：
+Electron, jQuery, FileSaver.min.js  
 
 ### completed：
 redesign UI，remove inconsequential things.  
