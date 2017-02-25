@@ -1,14 +1,28 @@
-/*prohibit landscape scroll*/
+/* Here's some grumble, you can just skip this. */
+/* I hate a developer named ACGI, he steal my design go to Get money. */
+/* his homepage is http://addon.discuz.com/?@52180.developer */
+/* his "二次元动漫ACGI_B1" almost completely copy my design for "moon_palace v1.0". */
+/* then he use it to make so much money (About ￥5000/Months), but I'm losing everything. */
+/* My friend feedback this to Discuz, but the response is his account be banned. */
+/* bad end */
+
+/* prohibit landscape scroll */
 html, body {
 	overflow-x: hidden;
 }
 
-/*remove unrelated things*/
-#g_nav, #g_top, .g-ft, .m-tabs.m-tabs-srch.f-cb.ztag, .opt.hshow, .u-lstlay.j-flag {
+/* remove unrelated things */
+#g_nav, #g_top, .g-ft, .opt.hshow, .u-lstlay.j-flag {
 	display: none;
 }
+.m-tabs.m-tabs-srch.f-cb.ztag li:not(:nth-child(1)) {
+	display: none;
+}
+.m-tabs.m-tabs-srch.f-cb.ztag li:nth-child(3) {
+	display: list-item;
+}
 
-/*beautify search input box*/
+/* beautify search input box */
 .n-srch .pgsrch {
 	width: 100%
 }
@@ -25,10 +39,10 @@ html, body {
 	background-position: -910px 0
 }
 
-/*indicate*/
+/* indicate */
 .ztag.j-flag:empty {
-    height: 450px;
-    background: url(http://xin.moem.cc/lrc163/lrc163.png) no-repeat;
+	height: 450px;
+	background: url(http://xin.moem.cc/MMT163/MMT163.png) no-repeat;
 }
 .ztag.j-flag .n-srchrst .srchsongst::before {
 	content: '　　 歌曲名　　　　　　　　　　　　　　　　　　　　　　　　艺术家　　　　　　　专辑　　　　　　　　　　曲长　';
@@ -42,7 +56,7 @@ html, body {
 	text-shadow: 0 0 3px rgba(0, 0, 0, .1);
 }
 
-/*render download button*/
+/* render download button */
 .n-srchrst .srchsongst .hd {
 	width: auto;
 	height: auto;
@@ -60,4 +74,17 @@ html, body {
 }
 .n-srchrst .srchsongst .hd .ply::after {
 	content: '下载歌词';
+}
+
+/* CD Cover style */
+.m-cvrlst .icon-play {
+	display: none !important;
+}
+
+/* change others things style */
+body {
+	background: #fff;
+}
+.g-bd {
+	border: 0;
 }

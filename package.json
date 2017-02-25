@@ -1,21 +1,22 @@
 {
-    "name": "lrc163",
-    "version": "0.1.0",
-    "description": "NeteaseMusic lyrics downloader",
+    "name": "MMT163",
+    "version": "0.1.1",
+    "description": "Moe Music Tools 163: A NeteaseMusic lyrics and CD Cover downloader",
     "main": "main.js",
     "scripts": {
         "start": "electron .",
-        "packosx": "electron-packager . 网易云歌词 --out=dist/osx --platform=darwin --arch=x64 --icon=./media/lrc163.icns --ignore=dist --ignore=media --ignore=node_modules --ignore=.git --overwrite --prune",
-        "packwin32": "electron-packager . 网易云歌词 --asar=true --out=dist/win --platform=win32 --arch=ia32 --icon=./media/lrc163.ico --ignore=dist --ignore=media --ignore=node_modules --ignore=.git --overwrite --prune",
-        "packwin64": "electron-packager . 网易云歌词 --asar=true --out=dist/win --platform=win32 --arch=x64 --icon=./media/lrc163.ico --ignore=dist --ignore=media --ignore=node_modules --ignore=.git --overwrite --prune",
+        "packosx": "electron-packager . 网易萌工具 --out=dist/osx --platform=darwin --arch=x64 --icon=./media/MMT163.icns --ignore=dist --ignore=media --ignore=node_modules --ignore=.git --overwrite --prune",
+        "packwin32": "electron-packager . 网易萌工具 --asar=true --out=dist/win --platform=win32 --arch=ia32 --icon=./media/MMT163.ico --ignore=dist --ignore=media --ignore=node_modules --ignore=.git --overwrite --prune",
+        "packwin64": "electron-packager . 网易萌工具 --asar=true --out=dist/win --platform=win32 --arch=x64 --icon=./media/MMT163.ico --ignore=dist --ignore=media --ignore=node_modules --ignore=.git --overwrite --prune",
         "build": "npm run packosx && npm run packwin32 && npm run packwin64"
     },
     "repository": "http://git.moem.cc/JoJunIori/NeteaseMusicLrcDownloader",
     "keywords": [
         "NeteaseMusic",
         "Music163",
-        "lrc163",
-        "lyrics"
+        "MMT163",
+        "lyrics",
+        "cover"
     ],
     "author": "JoJunIori",
     "devDependencies": {

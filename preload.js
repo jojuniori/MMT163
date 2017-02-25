@@ -53,7 +53,7 @@ function onload() {
   var iframeDiv = $(document.getElementById('g_iframe').contentWindow.document);
 
   //Change title
-  $('title').text('网易云歌词');
+  $('title').text('网易萌工具');
 
   // iFrame onload
   iframeDiv.find('#g_top, #g_nav').remove();
@@ -62,8 +62,8 @@ function onload() {
     var iframeDiv = $(document.getElementById('g_iframe').contentWindow.document);
     $('#g-topbar, .g-btmbar').remove();
     if (iframeDiv.find('head').length > 0) {
-      // iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://ofcgpg3h5.bkt.clouddn.com/Music163-style.css">');
-      iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://xin.moem.cc/lrc163/lrc163.css">');
+      iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://localhost/MMT163/media/MMT163.css">');
+      // iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://xin.moem.cc/MMT163/MMT163.css">');
 
       // add placeholder
       iframeDiv.find('#m-search-input').attr('placeholder', '输入 单曲/歌手/专辑/网易云音乐ID 进行搜索');
