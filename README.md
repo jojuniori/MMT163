@@ -11,6 +11,7 @@ get lyrics.
 download lyrics file.  
 auto rename lyrics file.  
 abroad music integration translation text.  
+abroad music respectively downloads original and translation text.
+donload CD cover.
 
 ### uncompleted：
-abroad music respectively downloads original and translation text.  

@@ -1,4 +1,4 @@
-const {nativeImage, ipcRenderer} = require('electron');
+const { nativeImage, ipcRenderer } = require('electron');
 
 var downloader = {
     count: 0,
@@ -40,7 +40,7 @@ function getLrc(songID, saveName) {
                 newLrc += presult.tlyric.lyric.toString();
 
             // cache lyric
-            var blob = new Blob([newLrc], {type: 'text/plaincharset=utf-8'});
+            var blob = new Blob([newLrc], { type: 'text/plaincharset=utf-8' });
 
             // console.log(newLrc)
             saveAs(blob, saveName + '.lrc');
@@ -135,16 +135,16 @@ function onload() {
         if (iframeDiv.find('[href]').length > 0)
             iframeDiv.find('a').removeAttr('href');
 
-            //** failed code... don't care this... **//
-            // $.each(iframeDiv.find('[href]'), function (index, value) {
-            //     // $(this).attr('onclick', 'function(e) {require("electron").shell.openExternal(' + value + ')}').removeAttr('href')
-            //     if ($(this).attr('target') === undefined) {
-            //       $(this).attr('target', '_blank')
-            //     }
-            //
-            //     console.log(index + ':' + value)
-            //   })
-        }
+        //** failed code... don't care this... **//
+        // $.each(iframeDiv.find('[href]'), function (index, value) {
+        //     // $(this).attr('onclick', 'function(e) {require("electron").shell.openExternal(' + value + ')}').removeAttr('href')
+        //     if ($(this).attr('target') === undefined) {
+        //       $(this).attr('target', '_blank')
+        //     }
+        //
+        //     console.log(index + ':' + value)
+        //   })
+    }
 
     var timerEL = setInterval(executeLoop, 100);
 }

@@ -7,56 +7,70 @@
 /* bad end */
 
 /* prohibit landscape scroll */
-html, body {
+html {
+	overflow: hidden;
+}
+
+body {
 	overflow-x: hidden;
 }
 
 /* remove unrelated things */
-#g_nav, #g_top, .g-ft, .opt.hshow, .u-lstlay.j-flag {
+#g_nav,#g_top,.g-ft,.opt.hshow,.u-lstlay.j-flag {
 	display: none;
 }
+
 .m-tabs.m-tabs-srch.f-cb.ztag li:not(:nth-child(1)) {
 	display: none;
 }
+
 .m-tabs.m-tabs-srch.f-cb.ztag li:nth-child(3) {
 	display: list-item;
 }
 
 /* beautify search input box */
 .n-srch .pgsrch {
-	width: 100%
+	width: 100%;
 }
-.n-srch .pgsrch, .n-srch .pgsrch .btn {
+
+.n-srch .pgsrch,.n-srch .pgsrch .btn {
 	background-image: url(http://ofcgpg3h5.bkt.clouddn.com/Music163/search_button.png);
 }
+
 .n-srch .pgsrch .srch {
 	width: 810px;
 	padding: 12px 20px;
 	margin: 0;
 	background: transparent;
 }
+
 .n-srch .pgsrch .btn:hover {
-	background-position: -910px 0
+	background-position: -910px 0;
 }
 
 /* indicate */
-.m-tabs-srch li em{
+.m-tabs-srch li em {
 	font-size: 0px;
 }
-.m-tabs-srch li em::after{
+
+.m-tabs-srch li em::after {
 	color: #333;
 	font-size: 14px;
 }
-.m-tabs-srch li.fst em::after{
+
+.m-tabs-srch li.fst em::after {
 	content: '下载单曲歌词';
 }
-.m-tabs-srch li.fst + li + li > a > em::after{
+
+.m-tabs-srch li.fst + li + li > a > em::after {
 	content: '下载专辑封面';
 }
+
 .ztag.j-flag:empty {
 	height: 450px;
 	background: url(http://xin.moem.cc/MMT163/MMT163.png) no-repeat;
 }
+
 .ztag.j-flag .n-srchrst .srchsongst::before {
 	content: '　　 歌曲名　　　　　　　　　　　　　　　　　　　　　　　　艺术家　　　　　　　专辑　　　　　　　　　　曲长　';
 	background: #f2f2f2;
@@ -75,6 +89,7 @@ html, body {
 	width: auto;
 	height: auto;
 }
+
 .n-srchrst .srchsongst .hd .ply {
 	line-height: 24px;
 	width: 64px;
@@ -86,6 +101,7 @@ html, body {
 	background: white;
 	box-shadow: 0 0 3px black;
 }
+
 .n-srchrst .srchsongst .hd .ply::after {
 	content: '下载歌词';
 }
@@ -99,6 +115,7 @@ html, body {
 body {
 	background: #fff;
 }
+
 .g-bd {
 	border: 0;
 }
