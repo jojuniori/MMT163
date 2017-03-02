@@ -1,0 +1,85 @@
+<!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+    <title> 通过js保存图片到本地 </title>
+    <meta name="Generator" content="EditPlus">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+
+    <script type="text/javascript">
+        function DownLoadReportIMG(imgPathURL) {
+
+            //如果隐藏IFRAME不存在，则添加
+            if (!document.getElementById("IframeReportImg"))
+                $('<iframe style="display:none;" id="IframeReportImg" name="IframeReportImg" onload="DoSaveAsIMG();" width="0" height="0" src="about:blank"></iframe>').appendTo("body");
+            if (document.all.IframeReportImg.src != imgPathURL) {
+                //加载图片
+                document.all.IframeReportImg.src = imgPathURL;
+            } else {
+                //图片直接另存为
+                DoSaveAsIMG();
+            }
+        }
+
+        function DoSaveAsIMG() {
+            if (document.all.IframeReportImg.src != "about:blank")
+                document.getElementById("IframeReportImg").document.execCommand("SaveAs");
+        }
+    </script>
+
+    <input type="button" value="download image" onclick="DownLoadReportIMG('http://www.oursss.com/uploads/photo/1045_2590.jpg?rd=0.9961522558898981');">
+    <input type="button" value="download image" onclick="DownLoadReportIMG('media/MMT163.png');">
+</body>
+
+</html> -->
+<!-- ============================================================================== -->
+<!-- <img src="http://p3.music.126.net/11u17cjajx_egNeJrSRJKg==/18190320370400777.jpg" />
+
+<script type="text/javascript">
+  var url = document.getElementsByTagName('img')[0].src.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+  window.open(url);
+</script> -->
+
+<!-- ============================================================================== -->
+
+<!-- <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('.design').each(function() {
+    var design = 'http://p3.music.126.net/11u17cjajx_egNeJrSRJKg==/18190320370400777.jpg';
+    var id = $('.design').attr('id');
+    var canvas = $('.design').find("canvas")[0];
+    var ctx = canvas.getContext("2d");
+    var img = new Image;
+
+    img.onload = function() {
+      ctx.drawImage(this, 0, 0);
+    };
+    img.src = design;
+  });
+});
+</script>
+<div class="design" id="image" data-design="http://lorempixel.com/technics/200/200/">
+  <canvas width="200" height="200"></canvas>
+  <p class="name">name</p>
+  <p class="asset">asset</p>
+</div> -->
+
+<!-- ============================================================================== -->
+
+
+<!-- <a href="http://server/site/test.txt" download="test001.txt" target="_blank">Download Your File</a> -->
+<!-- <script type="text/javascript">
+  // download cover (this can't change name)
+  var a = $('<a>').attr('href', imgSrc).attr('download', 'cover').appendTo('body');
+  a[0].click();
+  a.remove();
+</script> -->
+<!-- ============================================================================== -->

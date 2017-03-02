@@ -40,6 +40,19 @@ html, body {
 }
 
 /* indicate */
+.m-tabs-srch li em{
+	font-size: 0px;
+}
+.m-tabs-srch li em::after{
+	color: #333;
+	font-size: 14px;
+}
+.m-tabs-srch li.fst em::after{
+	content: '下载单曲歌词';
+}
+.m-tabs-srch li.fst + li + li > a > em::after{
+	content: '下载专辑封面';
+}
 .ztag.j-flag:empty {
 	height: 450px;
 	background: url(http://xin.moem.cc/MMT163/MMT163.png) no-repeat;
@@ -55,6 +68,7 @@ html, body {
 	font-size: 14px;
 	text-shadow: 0 0 3px rgba(0, 0, 0, .1);
 }
+
 
 /* render download button */
 .n-srchrst .srchsongst .hd {
