@@ -65,10 +65,6 @@ function createWindow() {
         mainWindow = null;
     });
 
-    //
-    // prefsWindow = new BrowserWindow({width: 400, height: 400})
-    // prefsWindow.loadURL('http://music.163.com/#/search/m/?s=')
-
     const {
         app,
         Menu
@@ -93,34 +89,25 @@ function createWindow() {
         template.unshift({
             label: app.getName(),
             submenu: [{
-                    role: 'about',
-                },
-                {
-                    type: 'separator',
-                },
-                {
-                    role: 'services',
-                    submenu: [],
-                },
-                {
-                    type: 'separator',
-                },
-                {
-                    role: 'hide',
-                },
-                {
-                    role: 'hideothers',
-                },
-                {
-                    role: 'unhide',
-                },
-                {
-                    type: 'separator',
-                },
-                {
-                    role: 'quit',
-                },
-            ],
+                role: 'about',
+            }, {
+                type: 'separator',
+            }, {
+                role: 'services',
+                submenu: [],
+            }, {
+                type: 'separator',
+            }, {
+                role: 'hide',
+            }, {
+                role: 'hideothers',
+            }, {
+                role: 'unhide',
+            }, {
+                type: 'separator',
+            }, {
+                role: 'quit',
+            }, ],
         });
     }
 

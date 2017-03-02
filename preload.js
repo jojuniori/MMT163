@@ -19,12 +19,6 @@ var downloader = {
 
 downloader.init();
 
-// img_url = 'http://p3.music.126.net/11u17cjajx_egNeJrSRJKg==/18190320370400777.jpg';
-// downloader.download(img_url, function(chunk) {
-//     let img = nativeImage.createFromBuffer(chunk);
-//     console.log(img.getSize());
-// });
-
 // get lrc
 function getLrc(songID, saveName) {
     $.get('http://music.163.com/api/song/lyric?lv=-1&tv=-1&id=' + songID, function(result) {
@@ -87,7 +81,8 @@ function onload() {
         var iframeDiv = $(document.getElementById('g_iframe').contentWindow.document);
         $('#g-topbar, .g-btmbar').remove();
         if (iframeDiv.find('#m-search').length > 0) {
-            iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://xin.moem.cc/MMT163/MMT163.css">');
+            // iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://xin.moem.cc/MMT163/MMT163.css">');
+            iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://localhost/MMT163/media/MMT163.css">');
             iframeDiv.find('body').append('<canvas id="coverCanvas"></canvas>');
 
             // add placeholder
@@ -134,6 +129,7 @@ function onload() {
         // remove href
         if (iframeDiv.find('[href]').length > 0)
             iframeDiv.find('a').removeAttr('href');
+            iframeDiv.find('[data-res-action="play"]').removeAttr('data-res-action');
 
         //** failed code... don't care this... **//
         // $.each(iframeDiv.find('[href]'), function (index, value) {
