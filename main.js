@@ -37,16 +37,15 @@ let mainWindow;
 function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 1920,
-        // width: 1000,
-        height: 1050,
-        // height: 700,
-        resizable: false,
+        width: 1000,
+        height: 700,
+        // resizable: false,
         title: '网易萌工具',
         autoHideMenuBar: true,
         webPreferences: {
             preload: path.resolve(__dirname, './preload.js'),
-            nodeIntegration: false
+            nodeIntegration: false,
+            webSecurity: false
         },
     });
     mainWindow.setTitle(require('./package.json').name);

@@ -26,18 +26,29 @@ function getLrc(songID, saveName) {
 
         // check lyric
         if (!presult.nolyric && !presult.uncollected) {
-            var newLrc = '';
-            newLrc += presult.lrc.lyric.toString();
+            let iframeDiv = $(document.getElementById('g_iframe').contentWindow.document);
 
-            // check translation
-            if (presult.tlyric.lyric !== null)
-                newLrc += presult.tlyric.lyric.toString();
+            let original, translate, allLrc;
+            original = presult.lrc.lyric.toString();
+            if (presult.tlyric.lyric !== null) translate = presult.tlyric.lyric.toString();
+            allLrc = original + translate;
 
-            // cache lyric
-            var blob = new Blob([newLrc], { type: 'text/plaincharset=utf-8' });
-
-            // console.log(newLrc)
-            saveAs(blob, saveName + '.lrc');
+            if (iframeDiv.find('#original').is(':checked')) {
+                let blob = new Blob([original], { type: 'text/plaincharset=utf-8' });
+                saveAs(blob, saveName + ' - original.lrc');
+            }
+            if (iframeDiv.find('#translate').is(':checked')) {
+                if (presult.tlyric.lyric !== null) {
+                    let blob = new Blob([translate], { type: 'text/plaincharset=utf-8' });
+                    saveAs(blob, saveName + ' - translate.lrc');
+                } else {
+                    alert('木有翻译');
+                }
+            }
+            if (iframeDiv.find('#allLrc').is(':checked')) {
+                let blob = new Blob([allLrc], { type: 'text/plaincharset=utf-8' });
+                saveAs(blob, saveName + '.lrc');
+            }
         } else {
             alert('无歌词');
         }
@@ -46,8 +57,8 @@ function getLrc(songID, saveName) {
 
 // load jQuery
 function loadjQ() {
-    var Script = document.createElement('script');
-    Script.setAttribute('src', 'http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js');
+    let Script = document.createElement('script');
+    Script.setAttribute('src', require('path').join(__dirname, 'jquery.min.js'));
     Script.setAttribute('type', 'text/javascript');
     document.body.appendChild(Script);
     if ($.get !== undefined) {
@@ -57,8 +68,8 @@ function loadjQ() {
 
 // load FileSave
 function loadFS() {
-    var Script = document.createElement('script');
-    Script.setAttribute('src', 'http://ofcgpg3h5.bkt.clouddn.com/Music163/FileSaver.min.js');
+    let Script = document.createElement('script');
+    Script.setAttribute('src', require('path').join(__dirname, 'FileSaver.min.js'));
     Script.setAttribute('type', 'text/javascript');
     document.body.appendChild(Script);
 }
@@ -71,9 +82,6 @@ function onload() {
     clearInterval(timer);
     var iframeDiv = $(document.getElementById('g_iframe').contentWindow.document);
 
-    //Change title
-    $('title').text('网易萌工具');
-
     // iFrame onload
     iframeDiv.find('#g_top, #g_nav').remove();
 
@@ -81,9 +89,53 @@ function onload() {
         var iframeDiv = $(document.getElementById('g_iframe').contentWindow.document);
         $('#g-topbar, .g-btmbar').remove();
         if (iframeDiv.find('#m-search').length > 0) {
-            // iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://xin.moem.cc/MMT163/MMT163.css">');
-            iframeDiv.find('head').append('<link rel="stylesheet" type="text/css" href="http://localhost/MMT163/media/MMT163.css">');
-            iframeDiv.find('body').append('<canvas id="coverCanvas"></canvas>');
+            // load icon font
+            let linkIcon = document.createElement('link');
+            linkIcon.setAttribute('rel', 'stylesheet');
+            linkIcon.setAttribute('href', require('path').join(__dirname, 'css/iconfont', 'material-icons.css'));
+            document.getElementById('g_iframe').contentWindow.document.head.appendChild(linkIcon);
+            // load css
+            let linkCss = document.createElement('link');
+            linkCss.setAttribute('rel', 'stylesheet');
+            linkCss.setAttribute('href', require('path').join(__dirname, 'css', 'MMT163.css'));
+            document.getElementById('g_iframe').contentWindow.document.head.appendChild(linkCss);
+
+            // setting cookie
+            let set_allLrc, set_original, set_translate;
+            if (document.cookie.match(/allLrc(.*?);/) === null) {
+                document.cookie = 'allLrc=1';
+                document.cookie = 'original=0';
+                document.cookie = 'translate=0';
+            } else {
+                set_allLrc = parseInt(document.cookie.match(/allLrc=(.*?);/)[1]);
+                set_original = parseInt(document.cookie.match(/original=(.*?);/)[1]);
+                set_translate = parseInt(document.cookie.match(/translate=(.*?);/)[1]);
+            }
+
+            // add setting html
+            let template = '<div class="MMT">' +
+                '   <a class="setting-button"> <i class="material-icons">&#xE8B8;</i> </a>' +
+                '   <div class="setting-frame">' +
+                '       <div><input type="checkbox" id="allLrc" ' + (set_allLrc ? 'checked' : '') + ' /> <label for="allLrc">下载二合一歌词</label></div>' +
+                '       <div><input type="checkbox" id="original" ' + (set_original ? 'checked' : '') + ' /> <label for="original">下载原文歌词</label></div>' +
+                '       <div><input type="checkbox" id="translate" ' + (set_translate ? 'checked' : '') + ' /> <label for="translate">下载翻译歌词</label></div>' +
+                '   </div>' +
+                '</div>';
+            iframeDiv.find('body').append(template);
+            iframeDiv.find('.MMT').on('click', '.setting-button', function(event) {
+                event.preventDefault();
+                $(this).toggleClass('open');
+            });
+            iframeDiv.find('.MMT').on('click', '.setting-frame div input', function(event) {
+                let checked = $(this).is(':checked');
+                let option = $(this).attr('id');
+                console.log(option + ':' + checked)
+                if (checked) {
+                    document.cookie = option + '=1';
+                } else {
+                    document.cookie = option + '=0';
+                }
+            });
 
             // add placeholder
             iframeDiv.find('#m-search-input').attr('placeholder', '输入 单曲/歌手/专辑/网易云音乐ID 进行搜索');
@@ -126,10 +178,12 @@ function onload() {
     function executeLoop() {
         var iframeDiv = $(document.getElementById('g_iframe').contentWindow.document);
 
-        // remove href
-        if (iframeDiv.find('[href]').length > 0)
-            iframeDiv.find('a').removeAttr('href');
-            iframeDiv.find('[data-res-action="play"]').removeAttr('data-res-action');
+        // remove href and play event
+        if (iframeDiv.find('[href]').length > 0) iframeDiv.find('a').removeAttr('href');
+        if (iframeDiv.find('[data-res-action="play"]').length > 0) iframeDiv.find('[data-res-action="play"]').removeAttr('data-res-action');
+
+        //Change title
+        if ($('title').text() !== "网易萌工具") $('title').text('网易萌工具');
 
         //** failed code... don't care this... **//
         // $.each(iframeDiv.find('[href]'), function (index, value) {

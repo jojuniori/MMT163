@@ -1,0 +1,238 @@
+/* Here's some grumble, you can just skip this. */
+/* I hate a developer named ACGI, he steal my design go to Get money. */
+/* his homepage is http://addon.discuz.com/?@52180.developer */
+/* his "二次元动漫ACGI_B1" almost completely copy my design for "moon_palace v1.0". */
+/* then he use it to make so much money (About ￥5000/Months), but I'm losing everything. */
+/* My friend feedback this to Discuz, but the response is his account be banned. */
+/* bad end */
+
+/* prohibit landscape scroll */
+html {
+	overflow: hidden;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+/* remove unrelated things */
+#g_nav,#g_top,.g-ft,.opt.hshow,.u-lstlay.j-flag,#m-search-input + .j-flag {
+	display: none;
+}
+
+.m-tabs.m-tabs-srch.f-cb.ztag li:not(:nth-child(1)) {
+	display: none;
+}
+
+.m-tabs.m-tabs-srch.f-cb.ztag li:nth-child(3) {
+	display: list-item;
+}
+
+/* beautify search input box */
+.n-srch .pgsrch {
+	width: 100%;
+}
+
+.n-srch .pgsrch,.n-srch .pgsrch .btn {
+	background-image: url(../img/search_button.png);
+}
+
+.n-srch .pgsrch .srch {
+	width: 810px;
+	padding: 12px 20px;
+	margin: 0;
+	background: transparent;
+}
+
+.n-srch .pgsrch .btn:hover {
+	background-position: -910px 0;
+}
+
+/* indicate */
+.m-tabs-srch li em {
+	font-size: 0px;
+}
+
+.m-tabs-srch li em::after {
+	color: #333;
+	font-size: 14px;
+}
+
+.m-tabs-srch li.fst em::after {
+	content: '下载单曲歌词';
+}
+
+.m-tabs-srch li.fst + li + li > a > em::after {
+	content: '下载专辑封面';
+}
+
+.ztag.j-flag:empty {
+	height: 450px;
+	background: url(../img/MMT163.png) no-repeat;
+}
+
+.ztag.j-flag .n-srchrst .srchsongst::before {
+	content: '　　　　 歌曲名　　　　　　　　　　　　　　　　　　　　　　　　艺术家　　　　　　　专辑　　　　　　　　　　曲长　';
+	background: #f2f2f2;
+	display: inline-block;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 14px;
+	text-shadow: 0 0 3px rgba(0, 0, 0, .1);
+}
+
+
+/* render download button */
+.n-srchrst .srchsongst .hd {
+	width: auto;
+	height: auto;
+}
+
+.n-srchrst .srchsongst .hd .ply {
+	width: 80px;
+	height: 24px;
+	margin-top: -2px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 3px;
+	background: white;
+	box-shadow: 0 0 3px black;
+}
+
+.n-srchrst .srchsongst .hd .ply::before {
+	content: 'file_download';
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 18px;
+	line-height: 24px;
+	display: inline-block;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	font-feature-settings: 'liga';
+}
+
+.n-srchrst .srchsongst .hd .ply::after {
+	content: '下载歌词';
+	position: relative;
+	top: -5px;
+}
+
+/* CD Cover style */
+.m-cvrlst .icon-play {
+	display: none !important;
+}
+
+/* change others things style */
+body {
+	background: #fff;
+}
+
+.g-bd {
+	border: 0;
+}
+
+/* MMT new style */
+.MMT {
+	user-select: none;
+}
+
+.MMT .setting-button {
+	position: fixed;
+	right: 40px;
+	bottom: 20px;
+	width: 60px;
+	height: 60px;
+	border-radius: 100%;
+	background: #fefefe;
+	box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.MMT .setting-button i {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	transform: rotate(0deg);
+	transition: all ease .3s;
+}
+
+.MMT .setting-button i:hover {
+	color: #ff5858;
+}
+
+.MMT .setting-button.open i {
+	transform: rotate(90deg);
+}
+
+.MMT .setting-frame {
+	position: fixed;
+	right: 40px;
+	bottom: 100px;
+	border-radius: 3px;
+	padding: 15px 20px;
+	background: #fefefe;
+	box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.3);
+	transition: all ease .3s;
+	transform: scale(0);
+	transform-origin: 85% bottom;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.MMT .setting-button.open + .setting-frame {
+	transform: scale(1);
+	visibility: visible;
+	opacity: 1;
+}
+
+.MMT .setting-frame div {
+	padding: 5px 0;
+}
+
+.MMT .setting-frame div input {
+	visibility: hidden;
+	width: 0;
+}
+
+.MMT .setting-frame div label {
+	color: #999;
+	font-size: 16px;
+	font-family: Microsoft Yahei, Helvetica, sans-serif;
+	transition: all ease .3s;
+}
+
+.MMT .setting-frame div input:checked + label {
+	color: #333;
+}
+
+.MMT .setting-frame div label:hover,.MMT .setting-frame div input:checked + label:hover {
+	color: #ff5858;
+}
+
+.MMT .setting-frame div input + label::before {
+	content: 'check_box_outline_blank';
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	white-space: nowrap;
+	position: relative;
+	top: 5px;
+	margin-right: 5px;
+}
+
+.MMT .setting-frame div input:checked + label::before {
+	content: 'check_box';
+}
