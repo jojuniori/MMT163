@@ -100,16 +100,16 @@ function onload() {
             linkCss.setAttribute('href', require('path').join(__dirname, 'css', 'MMT163.css'));
             document.getElementById('g_iframe').contentWindow.document.head.appendChild(linkCss);
 
-            // setting cookie
+            // setting cache
             let set_allLrc, set_original, set_translate;
-            if (document.cookie.match(/allLrc(.*?);/) === null) {
-                document.cookie = 'allLrc=1';
-                document.cookie = 'original=0';
-                document.cookie = 'translate=0';
+            if (localStorage.allLrc === undefined) {
+                localStorage.allLrc = 1;
+                localStorage.original = 0;
+                localStorage.translate = 0;
             } else {
-                set_allLrc = parseInt(document.cookie.match(/allLrc=(.*?);/)[1]);
-                set_original = parseInt(document.cookie.match(/original=(.*?);/)[1]);
-                set_translate = parseInt(document.cookie.match(/translate=(.*?);/)[1]);
+                set_allLrc = parseInt(localStorage.allLrc);
+                set_original = parseInt(localStorage.original);
+                set_translate = parseInt(localStorage.translate);
             }
 
             // add setting html
@@ -131,9 +131,9 @@ function onload() {
                 let option = $(this).attr('id');
                 console.log(option + ':' + checked)
                 if (checked) {
-                    document.cookie = option + '=1';
+                    localStorage[option] = 1;
                 } else {
-                    document.cookie = option + '=0';
+                    localStorage[option] = 0;
                 }
             });
 
