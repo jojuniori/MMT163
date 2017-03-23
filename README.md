@@ -2,6 +2,9 @@
 Create from Netease music website search page.  
 App icon template from: [yoios](https://github.com/mmarfil/yoios).  
 
+Developed & Redesigned: JoJunIori  
+Contributors: Skim
+
 ### Dev dependencies
 * Electron
 * jQuery
