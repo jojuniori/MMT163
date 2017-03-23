@@ -5,10 +5,10 @@ const app = electron.app;
 
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
-const ipcMain = electron.ipcMain;
-const net = electron.net;
-const path = require('path');
-const url = require('url');
+const ipcMain       = electron.ipcMain;
+const net           = electron.net;
+const path          = require('path');
+const url           = require('url');
 
 ipcMain.on('async-download-start', (event, taskId, url) => {
     request = net.request(url);
@@ -37,15 +37,15 @@ let mainWindow;
 function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 1000,
-        height: 700,
-        resizable: false,
-        title: '网易萌工具',
-        autoHideMenuBar: true,
-        webPreferences: {
-            preload: path.resolve(__dirname, './preload.js'),
-            nodeIntegration: false,
-            webSecurity: false
+        width           : 1000,
+        height          : 700,
+        resizable       : false,
+        title           : '网易云工具',
+        autoHideMenuBar : true,
+        webPreferences  : {
+            preload         : path.resolve(__dirname, './preload.js'),
+            nodeIntegration : false,
+            webSecurity     : false
         },
     });
     mainWindow.setTitle(require('./package.json').name);

@@ -11,6 +11,7 @@ var downloader = {
         this.callbacks[taskId] = cb;
         ipcRenderer.send("async-download-start", taskId, url);
     },
+    
     handleDownloadFinish(evt, taskId, chunk) {
         downloader.callbacks[taskId](chunk);
         delete downloader.callbacks[taskId];
@@ -19,7 +20,12 @@ var downloader = {
 
 downloader.init();
 
-// get lrc
+
+/**
+ * Get lrc
+ * @param {number} songID 
+ * @param {string} saveName 
+ */
 function getLrc(songID, saveName) {
     $.get('http://music.163.com/api/song/lyric?lv=-1&tv=-1&id=' + songID, function(result) {
         var presult = JSON.parse(result);
@@ -103,12 +109,12 @@ function onload() {
             // setting cache
             let set_allLrc, set_original, set_translate;
             if (localStorage.allLrc === undefined) {
-                localStorage.allLrc = 1;
-                localStorage.original = 0;
-                localStorage.translate = 0;
+            localStorage.allLrc     = 1;
+            localStorage.original   = 0;
+            localStorage.translate  = 0;
             } else {
-                set_allLrc = parseInt(localStorage.allLrc);
-                set_original = parseInt(localStorage.original);
+                set_allLrc    = parseInt(localStorage.allLrc);
+                set_original  = parseInt(localStorage.original);
                 set_translate = parseInt(localStorage.translate);
             }
 
@@ -129,7 +135,7 @@ function onload() {
             iframeDiv.find('.MMT').on('click', '.setting-frame div input', function(event) {
                 let checked = $(this).is(':checked');
                 let option = $(this).attr('id');
-                console.log(option + ':' + checked)
+                // console.log(option + ':' + checked)
                 if (checked) {
                     localStorage[option] = 1;
                 } else {
@@ -143,13 +149,13 @@ function onload() {
             // Bind download lrc
             iframeDiv.find('#m-search').on('click', '[title="播放"]', function(event) {
                 event.preventDefault();
-                var songID = $(this).attr('data-res-id');
-                var item = $(this).parents('.item');
-                var songName = item.children('.td.w0').find('.text').text();
-                var artist = item.children('.td.w1').children('.text').text();
-                var album = item.children('.td.w2').children('.text').text().replace('《', '').replace('》', '');
+                var songID   = $(this).attr('data-res-id');
+                var item     = $(this).parents('.item');
+                var songName = item.children('.td.w0').find('.text a').text();
+                var artist   = item.children('.td.w1').children('.text').text();
+                var album    = item.children('.td.w2').children('.text').text().replace('《', '').replace('》', '');
                 var saveName = album + ' - ' + songName + ' - ' + artist;
-                console.log(saveName);
+                // console.log(saveName);
                 getLrc(songID, saveName);
             });
 
@@ -158,13 +164,13 @@ function onload() {
                 event.preventDefault();
                 // get cover source link
                 var imgSrc = $(this).find('img').attr('src').replace(/\?(.*)$/, '');
-                console.log(imgSrc);
+                // console.log(imgSrc);
                 // get cover info
                 var album = $(this).next('.dec').children('.tit').text();
                 // download and rename cover
                 downloader.download(imgSrc, function(chunk) {
-                    let img = nativeImage.createFromBuffer(chunk).toPNG();
-                    saveAs(new Blob([img]), album + " - Cover.png");
+                    let img = nativeImage.createFromBuffer(chunk).toJPEG(100);
+                    saveAs(new Blob([img]), album + " - Cover.jpg");
                 });
             });
 
@@ -183,7 +189,7 @@ function onload() {
         if (iframeDiv.find('[data-res-action="play"]').length > 0) iframeDiv.find('[data-res-action="play"]').removeAttr('data-res-action');
 
         //Change title
-        if ($('title').text() !== "网易萌工具") $('title').text('网易萌工具');
+        if ($('title').text() !== "网易云工具") $('title').text('网易云工具');
 
         //** failed code... don't care this... **//
         // $.each(iframeDiv.find('[href]'), function (index, value) {
