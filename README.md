@@ -1,18 +1,19 @@
-### Netease music lyrics downloader
-create from Netease music website search page.  
-icon template from: [yoios](https://github.com/mmarfil/yoios)  
+### Moe Music Tools 163
+Create from Netease music website search page.  
+App icon template from: [yoios](https://github.com/mmarfil/yoios).  
 
-### dev dependencies：
-Electron, jQuery, FileSaver.min.js  
+### Dev dependencies
+* Electron
+* jQuery
+* FileSaver.min.js  
 
-### completed：
-redesign UI，remove inconsequential things.  
-get lyrics.  
-download lyrics file.  
-auto rename lyrics file.  
-abroad music integration translation text.  
-abroad music respectively downloads original and translation text.
-donload CD cover.
-add setting view.
+### Compared with Netease music website
+Redesign UI, remove inconsequential things.  
+Get and download lyrics, including originals and translations.   
+You can respectively download original or translated text or all of then.  
+It will auto rename lyrics file.  
+And you can use to donload CD Cover.
 
-### uncompleted：
+# License
+
+GPLv3
