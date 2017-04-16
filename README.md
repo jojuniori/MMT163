@@ -11,9 +11,9 @@ Developed & Redesigned: JoJunIori
 Contributors: Skim
 
 ### Dev dependencies
-* Electron
-* jQuery
-* FileSaver.min.js  
+* [Electron](https://electron.atom.io/) 
+* [jQuery](https://jquery.com/) 
+* [FileSaver.js](https://github.com/eligrey/FileSaver.js) 
 
 ### Compared with Netease music website
 Redesign UI, remove inconsequential things.  
