@@ -20,6 +20,26 @@ var downloader = {
 
 downloader.init();
 
+var requestUse = {
+    count: 0,
+    callbacks: {},
+    init() {
+        ipcRenderer.on('async-requestUse-finish', this.handleRequestUseFinish);
+    },
+    requestUse(url, cb) {
+        let taskId = ++requestUse.count;
+        this.callbacks[taskId] = cb;
+        ipcRenderer.send("async-requestUse-start", taskId, url);
+    },
+    
+    handleRequestUseFinish(evt, taskId, chunk) {
+        requestUse.callbacks[taskId](chunk);
+        delete requestUse.callbacks[taskId];
+    }
+};
+
+requestUse.init();
+
 
 /**
  * Get lrc
@@ -157,6 +177,8 @@ function onload() {
                 var saveName = album + ' - ' + songName + ' - ' + artist;
                 // console.log(saveName);
                 getLrc(songID, saveName);
+                // Count
+                requestUse.requestUse('useLrc');
             });
 
             // Bind download cover
@@ -172,6 +194,8 @@ function onload() {
                     let img = nativeImage.createFromBuffer(chunk).toJPEG(100);
                     saveAs(new Blob([img]), album + " - Cover.jpg");
                 });
+                // Count
+                requestUse.requestUse('useCover');
             });
 
             clearInterval(timerCS);

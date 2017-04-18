@@ -29,17 +29,61 @@ ipcMain.on('async-download-start', (event, taskId, url) => {
     });
     request.end();
 });
-
+ipcMain.on('async-requestUse-start', (event, taskId, url) => {
+    requestUse = net.request({
+        method: 'POST',
+        protocol: 'https:',
+        hostname: 'www.moem.cc',
+        port: 443,
+        path: '/software/MMT163/' + url
+    });
+    requestUse.on('response', (response) => {
+        let buffers = [],
+            totalLength = 0;
+        console.log(`STATUS: ${response.statusCode}`);
+        console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+        response.on('data', (chunk) => {
+            buffers.push(chunk);
+            totalLength += chunk.length;
+        });
+        response.on('end', () => {
+            console.log('send finish event');
+            let buf = Buffer.concat(buffers, totalLength);
+            event.sender.send('async-requestUse-finish', taskId, buf);
+        });
+    });
+    requestUse.end();
+});
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 function createWindow() {
+    const requestLaunch = net.request({
+        method: 'POST',
+        protocol: 'https:',
+        hostname: 'www.moem.cc',
+        port: 443,
+        path: '/software/MMT163/launch'
+    });
+    requestLaunch.on('response', (response) => {
+        console.log(`STATUS: ${response.statusCode}`);
+        console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+        response.on('data', (chunk) => {
+            console.log(`BODY: ${chunk}`);
+        });
+        response.on('end', () => {
+            console.log('No more data in response.');
+        });
+    });
+    requestLaunch.end();
+
+
     // Create the browser window.
     mainWindow = new BrowserWindow({
         width           : 1000,
         height          : 700,
-        resizable       : false,
+        // resizable       : false,
         title           : '网易云工具',
         autoHideMenuBar : true,
         webPreferences  : {
@@ -54,7 +98,7 @@ function createWindow() {
     mainWindow.loadURL('http://music.163.com/#/search/m/?s=');
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function() {
