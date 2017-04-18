@@ -88,6 +88,7 @@ function getLrc(songID, saveName) {
 function loadjQ() {
     let Script = document.createElement('script');
     Script.setAttribute('src', require('path').join(__dirname, 'jquery.min.js'));
+    // Script.setAttribute('src', 'http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js');
     Script.setAttribute('type', 'text/javascript');
     document.body.appendChild(Script);
     if ($.get !== undefined) {
@@ -99,6 +100,7 @@ function loadjQ() {
 function loadFS() {
     let Script = document.createElement('script');
     Script.setAttribute('src', require('path').join(__dirname, 'FileSaver.min.js'));
+    // Script.setAttribute('src', 'http://old.moem.cc/MMT163/FileSaver.min.js');
     Script.setAttribute('type', 'text/javascript');
     document.body.appendChild(Script);
 }
@@ -122,11 +124,13 @@ function onload() {
             let linkIcon = document.createElement('link');
             linkIcon.setAttribute('rel', 'stylesheet');
             linkIcon.setAttribute('href', require('path').join(__dirname, 'css/iconfont', 'material-icons.css'));
+            // linkIcon.setAttribute('href', 'http://old.moem.cc/MMT163/css/iconfont/material-icons.css');
             document.getElementById('g_iframe').contentWindow.document.head.appendChild(linkIcon);
             // load css
             let linkCss = document.createElement('link');
             linkCss.setAttribute('rel', 'stylesheet');
             linkCss.setAttribute('href', require('path').join(__dirname, 'css', 'MMT163.css'));
+            // linkCss.setAttribute('href', 'http://old.moem.cc/MMT163/css/MMT163.css');
             document.getElementById('g_iframe').contentWindow.document.head.appendChild(linkCss);
 
             // setting cache
