@@ -78,12 +78,11 @@ function createWindow() {
     });
     requestLaunch.end();
 
-
     // Create the browser window.
     mainWindow = new BrowserWindow({
         width           : 1000,
         height          : 700,
-        // resizable       : false,
+        resizable       : false,
         title           : '网易云工具',
         autoHideMenuBar : true,
         webPreferences  : {
@@ -98,7 +97,7 @@ function createWindow() {
     mainWindow.loadURL('http://music.163.com/#/search/m/?s=');
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function() {
