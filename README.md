@@ -4,10 +4,7 @@
 <h1 align="center">Moe Music Tools 163</h1>
 
 ### Download MMT163 
-You can download from: [Moem.cc](https://www.moem.cc/software/MMT163).  
-
-Developed & Redesigned: JoJunIori  
-Contributors: Skim
+:floppy_disk: You can download from: [Moem.cc](https://www.moem.cc/software/MMT163).  
 
 ### Use to download Lyric and Cover
 Create from Netease music website search page.  
