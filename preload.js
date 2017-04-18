@@ -75,6 +75,9 @@ function getLrc(songID, saveName) {
                 let blob = new Blob([allLrc], { type: 'text/plaincharset=utf-8' });
                 saveAs(blob, saveName + '.lrc');
             }
+
+            // Count if downloaded successfullyCount
+            requestUse.requestUse('useLrc');
         } else {
             alert('无歌词');
         }
@@ -177,8 +180,6 @@ function onload() {
                 var saveName = album + ' - ' + songName + ' - ' + artist;
                 // console.log(saveName);
                 getLrc(songID, saveName);
-                // Count
-                requestUse.requestUse('useLrc');
             });
 
             // Bind download cover
@@ -193,9 +194,10 @@ function onload() {
                 downloader.download(imgSrc, function(chunk) {
                     let img = nativeImage.createFromBuffer(chunk).toJPEG(100);
                     saveAs(new Blob([img]), album + " - Cover.jpg");
+
+                    // Count if downloaded successfully
+                    requestUse.requestUse('useCover');
                 });
-                // Count
-                requestUse.requestUse('useCover');
             });
 
             clearInterval(timerCS);
