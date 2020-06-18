@@ -1,16 +1,20 @@
 {
     "name": "MMT163",
     "version": "0.1.2",
+    "private": true,
     "description": "Moe Music Tools 163: A NeteaseMusic lyrics and CD Cover downloader",
     "main": "main.js",
     "scripts": {
         "start": "electron .",
         "packosx": "electron-packager . 网易云工具 --out=dist/osx --platform=darwin --arch=x64 --icon=./source/MMT163.icns --ignore=dist --ignore=source --ignore=node_modules --ignore=.git --overwrite --prune",
-        "packwin32": "electron-packager . 网易云工具 --asar=true --out=dist/win --platform=win32 --arch=ia32 --icon=./source/MMT163.ico --ignore=dist --ignore=source --ignore=node_modules --ignore=.git --overwrite --prune",
-        "packwin64": "electron-packager . 网易云工具 --asar=true --out=dist/win --platform=win32 --arch=x64 --icon=./source/MMT163.ico --ignore=dist --ignore=source --ignore=node_modules --ignore=.git --overwrite --prune",
+        "packwin32": "electron-packager . 网易云工具 --asar --out=dist/win --platform=win32 --arch=ia32 --icon=./source/MMT163.ico --ignore=dist --ignore=source --ignore=node_modules --ignore=.git --overwrite --prune",
+        "packwin64": "electron-packager . 网易云工具 --asar --out=dist/win --platform=win32 --arch=x64 --icon=./source/MMT163.ico --ignore=dist --ignore=source --ignore=node_modules --ignore=.git --overwrite --prune",
         "build": "npm run packosx && npm run packwin32 && npm run packwin64"
     },
-    "repository": "https://github.com/jojuniori/MMT163",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:jojuniori/MMT163.git"
+    },
     "keywords": [
         "NeteaseMusic",
         "Music163",
@@ -21,5 +25,8 @@
     "author": "JoJunIori",
     "devDependencies": {
         "electron": "^1.4.1"
+    },
+    "dependencies": {
+        "electron-packager": "^14.2.1"
     }
 }

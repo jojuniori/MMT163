@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="http://qiniu.qq-robot.cn/MMT163.png" width="256px" align="center">
+    <img src="https://raw.githubusercontent.com/jojuniori/MMT163/master/img/logo.png" width="256px" align="center">
 </div>
 <h1 align="center">Moe Music Tools 163</h1>
 
@@ -7,8 +7,8 @@
 :floppy_disk: You can download from: [releases](https://github.com/jojuniori/MMT163/releases).  
 
 ### Use to download Lyric and Cover
-![](http://qiniu.qq-robot.cn/Music163/slide-2.png)
-![](http://qiniu.qq-robot.cn/Music163/slide-1.png)
+![](https://raw.githubusercontent.com/jojuniori/MMT163/master/img/example1.png)
+![](https://raw.githubusercontent.com/jojuniori/MMT163/master/img/example2.png)
 
 Create from Netease music website search page.  
 App icon template from: [yoios](https://github.com/mmarfil/yoios).  
@@ -20,6 +20,15 @@ Contributors: Skim
 * [Electron](https://electron.atom.io/) 
 * [jQuery](https://jquery.com/) 
 * [FileSaver.js](https://github.com/eligrey/FileSaver.js) 
+
+build command  
+osx app `npm run packosx`  
+win32 app `npm run packwin32`  
+win64 app `npm run packwin64`  
+all `npm run build`  
+
+If you can't run it and console show `connect ECONNREFUSED`  
+Try `npm config set ELECTRON_MIRROR http://npm.taobao.org/mirrors/electron/`
 
 ### Compared with Netease music website
 Redesign UI, remove inconsequential things.  
