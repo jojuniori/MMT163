@@ -1,6 +1,6 @@
 {
     "name": "MMT163",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Moe Music Tools 163: A NeteaseMusic lyrics and CD Cover downloader",
     "main": "main.js",
     "scripts": {
@@ -10,7 +10,7 @@
         "packwin64": "electron-packager . 网易云工具 --asar=true --out=dist/win --platform=win32 --arch=x64 --icon=./source/MMT163.ico --ignore=dist --ignore=source --ignore=node_modules --ignore=.git --overwrite --prune",
         "build": "npm run packosx && npm run packwin32 && npm run packwin64"
     },
-    "repository": "http://git.moem.cc/JoJunIori/NeteaseMusicLrcDownloader",
+    "repository": "https://github.com/jojuniori/MMT163",
     "keywords": [
         "NeteaseMusic",
         "Music163",

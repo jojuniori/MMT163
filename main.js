@@ -33,9 +33,9 @@ ipcMain.on('async-requestUse-start', (event, taskId, url) => {
     requestUse = net.request({
         method: 'POST',
         protocol: 'https:',
-        hostname: 'www.moem.cc',
+        hostname: 'neko0.com',
         port: 443,
-        path: '/software/MMT163/' + url
+        path: '/count/software.php?name=MMT163&action=' + url
     });
     requestUse.on('response', (response) => {
         let buffers = [],
@@ -62,9 +62,9 @@ function createWindow() {
     const requestLaunch = net.request({
         method: 'POST',
         protocol: 'https:',
-        hostname: 'www.moem.cc',
+        hostname: 'neko0.com',
         port: 443,
-        path: '/software/MMT163/launch'
+        path: '/count/software.php?name=MMT163&action=launch'
     });
     requestLaunch.on('response', (response) => {
         console.log(`STATUS: ${response.statusCode}`);
@@ -116,7 +116,7 @@ function createWindow() {
         submenu: [{
                 label: '关于',
                 click() {
-                    require('electron').shell.openExternal('http://www.moem.cc');
+                    require('electron').shell.openExternal('http://neko0.com');
                 },
             },
             {
