@@ -24,7 +24,7 @@
     ],
     "author": "JoJunIori",
     "devDependencies": {
-        "electron": "^1.4.1"
+        "electron": "^15.5.5"
     },
     "dependencies": {
         "electron-packager": "^14.2.1"
